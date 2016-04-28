@@ -1,0 +1,31 @@
+<template>
+  <require from="file-audit/widget"></require>
+  <require from="data-audit/widget"></require>
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12">
+          <file-audit-widget></file-audit-widget>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12 m3">
+          <data-audit-widget options.bind="{title:'Credit Card', type:'creditcard'}"></data-audit-widget>
+        </div>
+        <div class="col s12 m3">
+          <data-audit-widget options.bind="{title:'Saving', type:'saving'}"></data-audit-widget>
+        </div>
+        <div class="col s12 m3">
+          <data-audit-widget options.bind="{title:'Deposito', type:'deposito'}"></data-audit-widget>
+        </div>
+        <div class="col s12 m3">
+          <data-audit-widget options.bind="{title:'Loan', type:'loan'}"></data-audit-widget>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</template>

@@ -1,0 +1,36 @@
+<template>
+  <require from="../value-converters/number-format"></require>
+  <require from="../value-converters/date-format"></require>
+
+  <ul class="collection with-header hoverable">
+    <li class="collection-header">
+      <h5>File Audit</h5>
+    </li>
+    <li repeat.for="row of data" class="collection-item">
+      <span class="truncate">${row.createdDate | dateFormat: 'DD MMM, YYYY - HH:mm:ss'}</span>
+      <span class="title">${row.name} / ${row.size | numberFormat:'0,0 b'} / ${row.line | numberFormat: '0,0'} rows</span>
+      <span class="truncate">${row.checksum}</span>
+    </li>
+    <li class="collection-item right-align">
+
+      <div class="switch">
+        <label>
+          <span class="grey-text darken-4">LIVE UPDATE : </span>Off
+          <input type="checkbox" checked.bind="liveUpdate" change.delegate="updateSetting()">
+          <span class="lever"></span>
+          On
+        </label>
+      </div>
+      <div>
+        <p class="range-field" if.bind="liveUpdate">
+          <input type="range" id="test5" min="1" max="10" value.bind="refreshRate" change.delegate="setTimer()"/>
+        </p>
+        <p if.bind="!liveUpdate">
+          <input type="button" class="btn" value="Update" click.delegate="refresh()"/>
+        </p>
+      </div>
+
+      last updated: ${lastRefresh| dateFormat: 'DD MMM, YYYY - HH:mm:ss'}
+    </li>
+  </ul>
+</template>

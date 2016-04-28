@@ -1,0 +1,48 @@
+<template>
+  <require from="../../value-converters/number-format"></require>
+  <require from="../../value-converters/date-format"></require>
+  <form>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label class="control-label" for="month">MONTH</label>
+        <input type="month" class="form-control" id="month" value.bind="data.month | dateFormat:'YYYY-MM'">
+        <span class="help-block">enter date of birth</span>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label class="control-label" for="period">PERIOD</label>
+        <select id="period" class="form-control" value.bind="data.period">
+          <option value="" disabled selected>Select Period</option>
+          <option repeat.for="period of periods" value.bind="period.value">${period.label}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label" for="from">FROM</label>
+          <input type="date" class="form-control" id="from" value.bind="data.from | dateFormat:'YYYY-MM-DD'">
+          <span class="help-block">enter date of birth</span>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label" for="to">TO</label>
+          <input type="date" class="form-control" id="to" value.bind="data.to | dateFormat:'YYYY-MM-DD'">
+          <span class="help-block">enter date of birth</span>
+        </div>
+      </div>
+    </div> 
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <button class="btn btn-default btn-lg btn-raised" click.delegate="back()">Back</button>
+          <button class="btn btn-primary btn-lg btn-raised" click.delegate="save()">Save</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</template>

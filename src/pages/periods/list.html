@@ -1,0 +1,29 @@
+<template>
+  <table class="table table-striped table-hover ">
+    <thead>
+      <tr>
+        <th>Month</th>
+        <th>Period</th>
+        <th>From/To</th>
+        <th>
+          <a href='#' click.delegate="create()">Create</a>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr repeat.for="row of data" click.delegate="$parent.view(row)">
+        <td>${row.month}</td>
+        <td>${row.period}</td>
+        <td>${row.from + ' - ' + row.to}</td>
+        <td>
+          <a href='#' click.delegate="$parent.edit(row)">Edit</a>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="4" class="text-right"></td>
+      </tr>
+    </tfoot>
+  </table>
+</template>
