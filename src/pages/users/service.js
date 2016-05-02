@@ -16,26 +16,26 @@ export class Service {
     this.header[this.settings.tokenHeaderName] = this.session.token;
   }
 
-  get(month, period) {
-    var endpoint = this.settings.workplanEndpoint + '/periods';
-    if (month && period)
-      endpoint = endpoint + '/' + month + '/' + period;
+  get(username) {
+    var endpoint = this.settings.authEndpoint + '/accounts';
+    if (username)
+      endpoint = endpoint + '/' + username;
 
-      var request = {
+    var request = {
       method: 'GET',
       headers: new Headers(this.header)
-      };
+    };
     return this.http.fetch(endpoint, request)
       .then(response => response.json());
   }
 
-  put(period) {
-    var endpoint = this.settings.workplanEndpoint + '/periods/' + period.month + '/' + period.period;
+  put(user) {
+    var endpoint = this.settings.authEndpoint + '/accounts/' + user.username;
 
     var request = {
       method: 'PUT',
       headers: new Headers(this.header),
-      body: JSON.stringify(period)
+      body: JSON.stringify(user)
     };
 
     return this.http
@@ -43,14 +43,15 @@ export class Service {
       .then(response => response.json());
   }
 
-  post(period) {
-    var endpoint = this.settings.workplanEndpoint + '/periods';
+  post(user) {
+    var endpoint = this.settings.authEndpoint + '/accounts';
 
     var request = {
       method: 'POST',
       headers: new Headers(this.header),
-      body: JSON.stringify(period)
+      body: JSON.stringify(user)
     };
+
     return this.http
       .fetch(endpoint, request)
       .then(response => response.json());

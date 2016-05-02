@@ -9,19 +9,19 @@ export class List {
     this.service = service;
   }
 
-  view(employee) {
+  view(user) {
     this.router.navigateToRoute('view', {
-      initial: employee.initial
+      username: user.username
     })
 
   }
 
-  edit(employee) {
+  edit(user) { 
     this.router.navigateToRoute('edit', {
-      initial: employee.initial
+      username: user.username
     })
   }
-  
+
   create() {
     this.router.navigateToRoute('create');
   }

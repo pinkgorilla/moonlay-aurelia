@@ -13,8 +13,8 @@ export class Viewer {
   }
 
   activate(params) {
-    var initial = params.initial;
-    this.service.get(initial)
+    var username = params.username;
+    this.service.get(username)
       .then(json => this.data = json.data);
   }
 

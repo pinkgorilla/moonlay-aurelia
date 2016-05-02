@@ -1,31 +1,39 @@
 import {inject} from 'aurelia-framework'
 import {HttpClient} from 'aurelia-fetch-client'
 import {Settings} from 'app-config';
+import {Session} from 'session';
 
-@inject(HttpClient, Settings)
+@inject(HttpClient, Settings, Session)
 export class Service {
-  constructor(http, settings) {
+  constructor(http, settings, session) {
     this.http = http;
-    this.settings = settings
+    this.settings = settings;
+    this.session = session;
+    this.header = {
+      "Content-type": "application/json; charset=UTF-8"
+    };
+    this.header[this.settings.tokenHeaderName] = this.session.token;
+    console.log(this.header);
   }
 
   get(initial, month, period) {
-    var endpoint = this.settings.baseUri + '/' + initial + '/workplans';
+    var endpoint = this.settings.workplanEndpoint + '/workplans';
     if (month && period)
       endpoint = endpoint + '/' + month + '/' + period;
-
-    return this.http.fetch(endpoint)
+    var request = {
+      method: 'GET',
+      headers: new Headers(this.header)
+    };
+    return this.http.fetch(endpoint, request)
       .then(response => response.json());
   }
 
   put(workplan) {
-    var endpoint = this.settings.baseUri + '/' + workplan.initial + '/workplans/' + workplan.month + '/' + workplan.period;
+    var endpoint = this.settings.workplanEndpoint + '/workplans/' + workplan.month + '/' + workplan.period;
 
     var request = {
       method: 'PUT',
-      headers: new Headers({
-        "Content-type": "application/json; charset=UTF-8"
-      }),
+      headers: new Headers(this.header),
       body: JSON.stringify(workplan)
     };
 
@@ -35,13 +43,11 @@ export class Service {
   }
 
   post(workplan) {
-    var endpoint = this.settings.baseUri + '/' + workplan.initial + '/workplans';
+    var endpoint = this.settings.workplanEndpoint + '/workplans';
 
     var request = {
       method: 'POST',
-      headers: new Headers({
-        "Content-type": "application/json; charset=UTF-8"
-      }),
+      headers: new Headers(this.header),
       body: JSON.stringify(workplan)
     };
 

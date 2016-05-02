@@ -1,7 +1,7 @@
 import {inject} from 'aurelia-framework'
 import {Router} from 'aurelia-router'
 import {Service} from './service';
-import {genders} from '../../lookup';
+import {genders} from 'lookup';
 import 'bootstrap-material-design';
 
 @inject(Router, Service, genders)
@@ -14,22 +14,16 @@ export class Editor {
     this.service = service;
     this.genders = genders;
   }
-  created() {
-    console.log('created');
-  }
+
   activate(params) {
-    console.log('activate');
-    var initial = params.initial;
-    if (initial) {
-      this.service.get(initial)
+    var username = params.username;
+    if (username) {
+      this.service.get(username)
         .then(json => {
           this.data = json.data;
-          console.log(this.data);
         });
     } else {
-      this.data = {
-        dob: '2016-04-21'
-      };
+      this.data = { };
     }
   }
 

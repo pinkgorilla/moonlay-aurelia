@@ -1,6 +1,6 @@
 import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
-import {periods} from '../../lookup';
+import {periods} from 'lookup';
 import {Service} from './service';
 import 'bootstrap-material-design';
 import moment from 'moment';
