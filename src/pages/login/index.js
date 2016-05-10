@@ -3,6 +3,7 @@ import {Router} from 'aurelia-router';
 import {Service} from './service';
 import {Session} from 'Session';
 import {Settings} from 'app-config';
+import {Cookie} from 'aurelia-cookie'
 
 import 'bootstrap-material-design';
 
@@ -18,7 +19,8 @@ export class Login {
   login() {
     this.service.authenticate(this.username, this.password)
     .then(json=>{
-      this.session.token = json.data.token;
+      Cookie.set(this.settings.cookieName, json.data.token);
+      // this.session.token = json.data.token;
       this.router.navigateToRoute('dashboard');
     })
     .catch(e=> console.log(e));
