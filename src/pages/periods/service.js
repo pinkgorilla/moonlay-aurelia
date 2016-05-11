@@ -1,7 +1,7 @@
 import {inject} from 'aurelia-framework';
 import {HttpClient, json} from 'aurelia-fetch-client';
-import {Settings} from 'app-config';
-import {Session} from 'session';
+import {Settings} from '../../app-config';
+import {Session} from '../../session';
 
 @inject(HttpClient, Session, Settings)
 export class Service {

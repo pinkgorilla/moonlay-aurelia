@@ -1,5 +1,11 @@
-// An example configuration file.
+require('babel-core/register')({
+  presets: ['es2015-loose', 'stage-1'],
+  plugins: ['transform-decorators-legacy']
+});
+
 exports.config = {
+  baseUrl: 'http://localhost:3000/',
+
   directConnect: true,
 
   // Capabilities to be passed to the webdriver instance.
@@ -8,7 +14,7 @@ exports.config = {
   },
 
   //seleniumAddress: 'http://0.0.0.0:4444',
-  specs: ['test/e2e/dist/**/*.js'],
+  specs: ['test/e2e/src/**/*.js'],
 
   plugins: [{
     path: 'aurelia.protractor.js'
@@ -19,5 +25,7 @@ exports.config = {
   jasmineNodeOpts: {
     showColors: true,
     defaultTimeoutInterval: 30000
+  },
+  onPrepare: function() {
   }
 };

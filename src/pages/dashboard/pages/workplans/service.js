@@ -1,7 +1,7 @@
 import {inject} from 'aurelia-framework'
 import {HttpClient} from 'aurelia-fetch-client'
-import {Settings} from 'app-config';
-import {Session} from 'session';
+import {Settings} from '../../../../app-config';
+import {Session} from '../../../../session';
 
 @inject(HttpClient, Settings, Session)
 export class Service {
@@ -13,7 +13,6 @@ export class Service {
       "Content-type": "application/json; charset=UTF-8"
     };
     this.header[this.settings.tokenHeaderName] = this.session.token;
-    console.log(this.header);
   }
 
   get(initial, month, period) {

@@ -1,6 +1,6 @@
 import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
-import {Session} from 'session';
+import {Session} from '../../session';
 import 'bootstrap-material-design';
 
 

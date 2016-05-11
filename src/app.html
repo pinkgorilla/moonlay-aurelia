@@ -1,16 +1,12 @@
 <template>
-  <!-- <require from="nav-bar.html"></require> -->
-  <require from="bootstrap/css/bootstrap.css"></require>
-  <!-- Bootstrap Material Design -->
-  <require from="bootstrap-material-design/dist/css/bootstrap-material-design.css"></require>
-  <require from="bootstrap-material-design/dist/css/ripples.css"></require>
-  <div class="container">
-    <!-- <nav-bar router.bind="router"></nav-bar> -->
+  <require from="nav-bar.html"></require>
+  <nav-bar router.bind="router"></nav-bar>
 
-    <div class="page-host">
-      <router-view></router-view>
+  <div class="page-host">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">      
+        <router-view></router-view>
+      </div>
     </div>
-
   </div>
-</footer>
 </template>
