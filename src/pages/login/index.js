@@ -12,7 +12,7 @@ export class Login {
     this.router = router;
     this.service = service;
     this.settings = settings
-    this.session = session;
+    this.session = session; 
   }
 
   login() {

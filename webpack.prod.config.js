@@ -4,6 +4,7 @@ var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var AureliaWebpackPlugin = require('aurelia-webpack-plugin');
 var ProvidePlugin = require('webpack/lib/ProvidePlugin');
+var DefinePlugin = require('webpack/lib/DefinePlugin');
 var pkg = require('./package.json');
 
 var outputFileTemplateSuffix = '-' + pkg.version;
@@ -21,6 +22,14 @@ module.exports = {
   },
   plugins: [
     new AureliaWebpackPlugin(),
+    new DefinePlugin({
+      env: {
+        tokenHeader: "'X-Access-Token'",
+        cookieName: "'__moonlay_cookie'",
+        authEndpoint: "'http://authentication-api.mybluemix.net'",
+        workplanEndpoint: "'https://workplan-api.mybluemix.net'",
+      }
+    }),
     new HtmlWebpackPlugin({
       title: 'Aurelia webpack skeleton - ' + pkg.version,
       template: 'index.prod.html',

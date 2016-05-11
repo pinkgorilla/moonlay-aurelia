@@ -3,6 +3,7 @@
 var path = require('path');
 var AureliaWebpackPlugin = require('aurelia-webpack-plugin');
 var ProvidePlugin = require('webpack/lib/ProvidePlugin');
+var DefinePlugin = require('webpack/lib/DefinePlugin');
 
 module.exports = {
   devServer: {
@@ -20,6 +21,14 @@ module.exports = {
   },
   plugins: [
     new AureliaWebpackPlugin(),
+    new DefinePlugin({
+      env: {
+        tokenHeader: "'X-Access-Token'",
+        cookieName: "'__moonlay_cookie'",
+        authEndpoint: "'http://authentication-api-dev.mybluemix.net'",
+        workplanEndpoint: "'https://workplan-api-dev.mybluemix.net'",
+      }
+    }),
     new ProvidePlugin({
       Promise: 'bluebird',
       $: 'jquery',
