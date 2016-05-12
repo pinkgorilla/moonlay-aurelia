@@ -46,13 +46,15 @@
     "bluebird": "^3.3.4",
     "bootstrap": "^3.3.6",
     "bootstrap-material-design": "^0.5.9",
+    "capital-models": "^1.0.9",
     "chart.js": "^2.1.2",
     "font-awesome": "^4.5.0",
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^2.2.3",
     "js-cookie": "^2.1.1",
     "moment": "^2.13.0",
-    "numeral": "^1.5.3"
+    "numeral": "^1.5.3",
+    "toastr": "^2.1.2"
   },
   "devDependencies": {
     "aurelia-tools": "^0.1.18",

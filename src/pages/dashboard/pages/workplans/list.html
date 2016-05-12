@@ -6,16 +6,18 @@
     <thead>
       <tr>
         <th>Period</th>
-        <th>Period</th>
-        <th>Period</th>
-        <th>Period</th>
+        <th>From / To</th>
+        <th>Items</th>
+        <th>Completion</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       <tr repeat.for="row of data">
-        <td>${row.month + '/' + row.period + ' - ' + row.from + ' ~ ' + row.to}</td>
+        <td>${row.period.month + '/' + row.period.period}</td>
+        <td>${row.period.from + ' ~ ' + row.period.to}</td>
         <td>${row.items.length}</td>
-        <td>${row.month + '/' + row.period}</td>
+        <td>${row.completion}%</td>
         <td>
           <a href="#" click.delegate="edit(row)">edit</a>
         </td>

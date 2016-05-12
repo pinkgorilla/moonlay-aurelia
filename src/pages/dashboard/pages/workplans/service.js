@@ -13,6 +13,7 @@ export class Service {
       "Content-type": "application/json; charset=UTF-8"
     };
     this.header[this.settings.tokenHeaderName] = this.session.token;
+    console.log(this.header);
   }
 
   get(initial, month, period) {
@@ -28,7 +29,7 @@ export class Service {
   }
 
   put(workplan) {
-    var endpoint = this.settings.workplanEndpoint + '/workplans/' + workplan.month + '/' + workplan.period;
+    var endpoint = this.settings.workplanEndpoint + '/workplans/' + workplan.period.month + '/' + workplan.period.period;
 
     var request = {
       method: 'PUT',

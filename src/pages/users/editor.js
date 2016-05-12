@@ -2,14 +2,13 @@ import {inject} from 'aurelia-framework'
 import {Router} from 'aurelia-router'
 import {Service} from './service';
 import {genders} from '../../lookup';
+import {BaseVM} from '../base-vm';
 import 'bootstrap-material-design';
 
 @inject(Router, Service, genders)
-export class Editor {
-  change() {
-    console.log(this.data)
-  }
+export class Editor extends BaseVM {
   constructor(router, service, genders) {
+    super();
     this.router = router;
     this.service = service;
     this.genders = genders;
@@ -21,9 +20,10 @@ export class Editor {
       this.service.get(username)
         .then(json => {
           this.data = json.data;
-        });
+        })
+        .catch(e => showError(e));
     } else {
-      this.data = { };
+      this.data = {};
     }
   }
 
@@ -38,18 +38,15 @@ export class Editor {
 
   save() {
     var promise;
-    console.log(this.data);
     if (this.data._id)
       promise = this.service.put(this.data)
     else
       promise = this.service.post(this.data)
 
-    promise.then(json => {
-        console.log(json);
+    promise
+      .then(json => {
         this.router.navigateToRoute('list');
       })
-      .catch(function(e) {
-        alert('error:' + e);
-      });
+      .catch(e => showError(e));
   }
 }

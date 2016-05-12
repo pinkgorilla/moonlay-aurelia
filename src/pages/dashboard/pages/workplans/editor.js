@@ -1,16 +1,16 @@
 import {inject} from 'aurelia-framework'
 import {Router} from 'aurelia-router'
 import {Service} from './service'
-import {types} from '../../../../lookup';
 import moment from 'moment'
+import {BaseVM} from '../../../base-vm';
 import 'bootstrap-material-design';
 
-@inject(Service, Router, types)
-export class Editor {
-  constructor(service, router, types) {
+@inject(Service, Router)
+export class Editor extends BaseVM {
+  constructor(service, router) {
+    super();
     this.service = service;
     this.router = router;
-    this.types = types;
   }
 
   activate(params) {
@@ -21,8 +21,8 @@ export class Editor {
     this.service.get(this.initial, this.month, this.period)
       .then(json => {
         this.data = json.data;
-        console.log(json)
-      });
+      })
+      .catch(e => showError(e));
   }
 
   attached() {
@@ -31,25 +31,27 @@ export class Editor {
 
   add() {
     var now = new Date();
-    var item = {
-      no: 0,
-      code: '',
-      month: this.data.month,
-      period: this.data.period,
-      type: '',
-      name: '',
-      description: '',
-      estDate: moment(this.data.to).format('YYYY-MM-DD'),
-      done: false,
-      completeDate: moment(this.data.to).format('YYYY-MM-DD'),
-      void: false,
-      reason:''
-    };
+    var UserWorkplanItem = require('capital-models').workplan.UserWorkplanItem;
+    var item = new UserWorkplanItem(
+      {
+        estimatedDate: moment(this.data.period.to).format('YYYY-MM-DD'),
+        completedDate: moment(this.data.period.to).format('YYYY-MM-DD')
+      });
+    // var item = {
+    //   no: 0,
+    //   code: '',
+    //   month: this.data.period.month,
+    //   period: this.data.period.period,
+    //   type: '',
+    //   name: '',
+    //   description: '',
+    //   estDate: moment(this.data.period.to).format('YYYY-MM-DD'),
+    //   done: false,
+    //   completeDate: moment(this.data.period.to).format('YYYY-MM-DD'),
+    //   void: false,
+    //   reason: ''
+    // };
     this.data.items.push(item);
-  }
-  remove(item) {
-    var itemIndex = this.data.items.indexOf(item);
-    this.data.items.splice(itemIndex, 1);
   }
 
   save() {
@@ -57,7 +59,7 @@ export class Editor {
       .then(json => {
         this.router.navigateToRoute('list');
       })
-      .catch(e => console.log(e));
+      .catch(e => showError(e));
   }
   back() {
     this.router.navigateToRoute('list');

@@ -1,18 +1,21 @@
 import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
 import {Service} from './service';
+import {BaseVM} from '../base-vm';
+
 
 @inject(Router, Service)
-export class List {
+export class List extends BaseVM {
   constructor(router, service) {
+    super();
     this.router = router;
     this.service = service;
   }
 
   view(period) {
     this.router.navigateToRoute('view', {
-        month: period.month,
-        period: period.period
+      month: period.month,
+      period: period.period
     })
 
   }
@@ -30,6 +33,9 @@ export class List {
 
   activate() {
     this.service.get()
-      .then(json => this.data = json.data);
+      .then(json => {
+        this.data = json.data;
+      })
+      .catch(e => showError(e));
   }
 }

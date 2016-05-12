@@ -2,11 +2,13 @@ import {inject} from 'aurelia-framework'
 import {Router} from 'aurelia-router'
 import {Service} from './service';
 import {genders} from '../../lookup';
+import {BaseVM} from '../base-vm';
 import 'bootstrap-material-design';
 
 @inject(Router, Service, genders)
-export class Viewer {
+export class Viewer extends BaseVM {
   constructor(router, service, genders) {
+    super();
     this.router = router;
     this.service = service;
     this.genders = genders;
@@ -15,7 +17,10 @@ export class Viewer {
   activate(params) {
     var username = params.username;
     this.service.get(username)
-      .then(json => this.data = json.data);
+      .then(json => {
+        this.data = json.data;
+      })
+      .catch(e => showError(e));
   }
 
   attached() {

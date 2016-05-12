@@ -25,8 +25,8 @@ module.exports = {
       env: {
         tokenHeader: "'X-Access-Token'",
         cookieName: "'__moonlay_cookie'",
-        authEndpoint: "'http://authentication-api-dev.mybluemix.net'",
-        workplanEndpoint: "'https://workplan-api-dev.mybluemix.net'",
+        authEndpoint: "'http://localhost:8080'",
+        workplanEndpoint: "'http://localhost:8081'",
       }
     }),
     new ProvidePlugin({
