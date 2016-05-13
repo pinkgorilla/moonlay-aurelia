@@ -38,14 +38,14 @@
     <div class="col-md-2" if.bind="!item.cancel">
       <div class="form-group label-floating">
         <label for="${'item_estimatedDate_' + itemNo}" class="control-label">Estimated Date</label>
-        <input type="date" class="form-control" id="${'item_estimatedDate_' + itemNo}" value.bind="item.estimatedDate | dateFormat:'YYYY-MM-DD'">
+        <input type="date" class="form-control" id="${'item_estimatedDate_' + itemNo}" value.bind="item.estimatedDate | dateFormat:'YYYY-MM-DD'" min.bind="workplan.period.from" max.bind="workplan.period.to">
         <span class="help-block">estimated completion date</span>
       </div>
     </div>
     <div class="col-md-2" if.bind="!item.cancel">
         <div class="form-group label-floating">
           <label for="${'item_completedDate_' + itemNo}" class="control-label">Completed Date</label>
-          <input type="date" class="form-control" id="${'item_completedDate_' + itemNo}" value.bind="item.completedDate | dateFormat:'YYYY-MM-DD'" disabled.bind="!item.done">
+          <input type="date" class="form-control" id="${'item_completedDate_' + itemNo}" value.bind="item.completedDate | dateFormat:'YYYY-MM-DD'" min.bind="workplan.period.from"  disabled.bind="!item.done">
           <span class="help-block">actual completion date</span>
         </div> 
     </div>
