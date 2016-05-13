@@ -4,7 +4,7 @@ import {Session} from '../../../../session';
 import {RestService} from '../../../rest-service';
 
 @inject(Settings, Session)
-export class Service extends RestService{
+export class Service extends RestService {
   constructor(settings, session) {
     super();
     this.settings = settings;
@@ -20,19 +20,19 @@ export class Service extends RestService{
     if (month && period)
       endpoint = endpoint + '/' + month + '/' + period;
 
-      return super.get(endpoint, this.header);
+    return super.get(endpoint, this.header);
   }
 
   put(workplan) {
     var endpoint = this.settings.workplanEndpoint + '/workplans/' + workplan.period.month + '/' + workplan.period.period;
 
-      return super.put(endpoint, workplan, this.header);
+    return super.put(endpoint, workplan, this.header);
   }
 
   post(workplan) {
     var endpoint = this.settings.workplanEndpoint + '/workplans';
 
-      return super.post(endpoint, workplan, this.header);
+    return super.post(endpoint, workplan, this.header);
   }
 
 }

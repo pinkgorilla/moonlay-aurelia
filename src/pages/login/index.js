@@ -18,7 +18,7 @@ export class Login extends BaseVM {
   login() {
     this.service.authenticate(this.username, this.password)
       .then(json => {
-        this.session.token = json.token;
+        this.session.data = json;
         this.router.navigateToRoute('dashboard');
       })
       .catch(e => this.showError(e));
