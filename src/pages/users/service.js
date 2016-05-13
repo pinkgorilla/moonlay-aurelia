@@ -1,12 +1,12 @@
 import {inject} from 'aurelia-framework';
-import {HttpClient, json} from 'aurelia-fetch-client';
 import {Settings} from '../../app-config';
 import {Session} from '../../session';
+import {RestService} from '../rest-service'
 
-@inject(HttpClient, Session, Settings)
-export class Service {
-  constructor(http, session, settings) {
-    this.http = http;
+@inject(Session, Settings)
+export class Service extends RestService {
+  constructor(session, settings) {
+    super(); 
     this.session = session;
     this.settings = settings;
 
@@ -14,6 +14,7 @@ export class Service {
       "Content-type": "application/json; charset=UTF-8"
     };
     this.header[this.settings.tokenHeaderName] = this.session.token;
+
   }
 
   get(username) {
@@ -21,39 +22,18 @@ export class Service {
     if (username)
       endpoint = endpoint + '/' + username;
 
-    var request = {
-      method: 'GET',
-      headers: new Headers(this.header)
-    };
-    return this.http.fetch(endpoint, request)
-      .then(response => response.json());
+    return super.get(endpoint, this.header);
   }
 
   put(user) {
     var endpoint = this.settings.authEndpoint + '/accounts/' + user.username;
 
-    var request = {
-      method: 'PUT',
-      headers: new Headers(this.header),
-      body: JSON.stringify(user)
-    };
-
-    return this.http
-      .fetch(endpoint, request)
-      .then(response => response.json());
+    return super.put(endpoint, user, this.header);
   }
 
   post(user) {
     var endpoint = this.settings.authEndpoint + '/accounts';
 
-    var request = {
-      method: 'POST',
-      headers: new Headers(this.header),
-      body: JSON.stringify(user)
-    };
-
-    return this.http
-      .fetch(endpoint, request)
-      .then(response => response.json());
+    return super.post(endpoint, user, this.header);
   }
 }

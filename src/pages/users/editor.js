@@ -19,9 +19,9 @@ export class Editor extends BaseVM {
     if (username) {
       this.service.get(username)
         .then(json => {
-          this.data = json.data;
+          this.data = json;
         })
-        .catch(e => showError(e));
+        .catch(e => this.showError(e));
     } else {
       this.data = {};
     }
@@ -47,6 +47,6 @@ export class Editor extends BaseVM {
       .then(json => {
         this.router.navigateToRoute('list');
       })
-      .catch(e => showError(e));
+      .catch(e => this.showError(e));
   }
 }

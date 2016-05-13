@@ -1,5 +1,5 @@
 'use strict'
-import {inject} from 'aurelia-framework'
+import {inject, transient} from 'aurelia-framework'
 import {Settings} from './app-config' 
 
 @inject(Settings)
@@ -9,16 +9,6 @@ export class Session
   {
     this.settings = settings; 
   }  
-  
-  setToken(token)
-  {
-    var Cookies  = require('js-cookie');
-    Cookies.set(this.settings.cookieName, token);
-  }
-  
-  getToken(){
-    
-  }
   
   get token(){ 
     var Cookies  = require('js-cookie');

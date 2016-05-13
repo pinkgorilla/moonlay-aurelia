@@ -24,6 +24,7 @@ export class BaseVM {
         }
     }
     showError(error) {
+        console.log(error);
         this.toastr.error(error.message || error.error || error, 'title');
     }
     showSuccess(message) {

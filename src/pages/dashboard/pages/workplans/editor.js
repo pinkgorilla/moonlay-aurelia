@@ -20,9 +20,9 @@ export class Editor extends BaseVM {
 
     this.service.get(this.initial, this.month, this.period)
       .then(json => {
-        this.data = json.data;
+        this.data = json;
       })
-      .catch(e => showError(e));
+      .catch(e => this.showError(e));
   }
 
   attached() {
@@ -37,20 +37,6 @@ export class Editor extends BaseVM {
         estimatedDate: moment(this.data.period.to).format('YYYY-MM-DD'),
         completedDate: moment(this.data.period.to).format('YYYY-MM-DD')
       });
-    // var item = {
-    //   no: 0,
-    //   code: '',
-    //   month: this.data.period.month,
-    //   period: this.data.period.period,
-    //   type: '',
-    //   name: '',
-    //   description: '',
-    //   estDate: moment(this.data.period.to).format('YYYY-MM-DD'),
-    //   done: false,
-    //   completeDate: moment(this.data.period.to).format('YYYY-MM-DD'),
-    //   void: false,
-    //   reason: ''
-    // };
     this.data.items.push(item);
   }
 
@@ -59,7 +45,7 @@ export class Editor extends BaseVM {
       .then(json => {
         this.router.navigateToRoute('list');
       })
-      .catch(e => showError(e));
+      .catch(e => this.showError(e));
   }
   back() {
     this.router.navigateToRoute('list');

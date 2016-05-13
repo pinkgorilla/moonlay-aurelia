@@ -30,9 +30,9 @@ export class List extends BaseVM{
 
   activate() {
     this.service.get()
-      .then(json => {
-        this.data = json.data;
+      .then(json => { 
+        this.data = json;
       })
-      .catch(e => showError(e));
+      .catch(e => this.showError(e));
   }
 }

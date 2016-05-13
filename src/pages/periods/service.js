@@ -1,17 +1,17 @@
 import {inject} from 'aurelia-framework';
-import {HttpClient, json} from 'aurelia-fetch-client';
 import {Settings} from '../../app-config';
 import {Session} from '../../session';
+import {RestService} from '../rest-service';
 
-@inject(HttpClient, Session, Settings)
-export class Service {
-  constructor(http, session, settings) {
-    this.http = http;
+@inject(Session, Settings)
+export class Service extends RestService {
+  constructor( session, settings) {
+    super();
     this.session = session;
     this.settings = settings;
 
     this.header = {
-      "Content-type": "application/json; charset=UTF-8"
+      "Content-Type": "application/json; charset=UTF-8"
     };
     this.header[this.settings.tokenHeaderName] = this.session.token;
   }
@@ -21,38 +21,16 @@ export class Service {
     if (month && period)
       endpoint = endpoint + '/' + month + '/' + period;
 
-      var request = {
-      method: 'GET',
-      headers: new Headers(this.header)
-      };
-    return this.http.fetch(endpoint, request)
-      .then(response => response.json());
+    return super.get(endpoint, this.header);
   }
 
   put(period) {
     var endpoint = this.settings.workplanEndpoint + '/periods/' + period.month + '/' + period.period;
-
-    var request = {
-      method: 'PUT',
-      headers: new Headers(this.header),
-      body: JSON.stringify(period)
-    };
-
-    return this.http
-      .fetch(endpoint, request)
-      .then(response => response.json());
+    return super.put(endpoint, period, this.header);
   }
 
   post(period) {
     var endpoint = this.settings.workplanEndpoint + '/periods';
-
-    var request = {
-      method: 'POST',
-      headers: new Headers(this.header),
-      body: JSON.stringify(period)
-    };
-    return this.http
-      .fetch(endpoint, request)
-      .then(response => response.json());
+    return super.post(endpoint, period, this.header);
   }
 }

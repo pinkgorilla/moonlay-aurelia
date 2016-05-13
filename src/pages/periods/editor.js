@@ -21,9 +21,9 @@ export class Editor extends BaseVM {
     if (month && period) {
       this.service.get(month, period)
         .then(json => {
-          this.data = json.data;
+          this.data = json;
         })
-        .catch(e => showError(e));
+        .catch(e => this.showError(e));
     } else {
       var now = new Date();
       this.data = {
@@ -55,6 +55,6 @@ export class Editor extends BaseVM {
       .then(json => {
         this.router.navigateToRoute('list');
       })
-      .catch(e => showError(e));
+      .catch(e => this.showError(e));
   }
 }

@@ -33,6 +33,7 @@ module.exports = {
       Promise: 'bluebird',
       $: 'jquery',
       jQuery: 'jquery',
+      'fetch' :'imports?this=>global!exports?global.fetch!whatwg-fetch',
       'window.jQuery': 'jquery' // this doesn't expose jQuery property for window, but expose it to every module
     })
   ],

@@ -20,7 +20,7 @@ export class Viewer extends BaseVM {
       .then(json => {
         this.data = json.data;
       })
-      .catch(e => showError(e));
+      .catch(e => this.showError(e));
   }
 
   attached() {

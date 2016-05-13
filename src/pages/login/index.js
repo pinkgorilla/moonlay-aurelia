@@ -18,18 +18,8 @@ export class Login extends BaseVM {
   login() {
     this.service.authenticate(this.username, this.password)
       .then(json => {
-        if (json.error) {
-          this.showError(json.error);
-        }
-        else if (json.data) {
-          if (json.data.success === false) {
-            this.showError(json.data);
-          }
-          else {
-            this.session.token = json.data.token;
-            this.router.navigateToRoute('dashboard');
-          }
-        }
+        this.session.token = json.token;
+        this.router.navigateToRoute('dashboard');
       })
       .catch(e => this.showError(e));
   }
