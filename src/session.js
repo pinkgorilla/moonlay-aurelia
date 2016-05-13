@@ -10,8 +10,12 @@ export class Session {
   get data() {
     var Cookies = require('js-cookie');
     var token = Cookies.get(this.settings.cookieName);
-    return JSON.parse(token);
+    if(token)
+      return JSON.parse(token);
+    else
+      return {token:'', user:{}};
   }
+  
   set data(value) {
     var Cookies = require('js-cookie');
     Cookies.set(this.settings.cookieName, JSON.stringify(value));

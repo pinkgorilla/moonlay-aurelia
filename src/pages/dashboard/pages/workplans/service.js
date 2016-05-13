@@ -12,7 +12,7 @@ export class Service extends RestService {
     this.header = {
       "Content-type": "application/json; charset=UTF-8"
     };
-    this.header[this.settings.tokenHeaderName] = this.session.token;
+    // this.header[this.settings.tokenHeaderName] = this.session.token;
   }
 
   get(initial, month, period) {
