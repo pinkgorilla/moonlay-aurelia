@@ -18,7 +18,7 @@ export class Viewer extends BaseVM {
     var username = params.username;
     this.service.get(username)
       .then(json => {
-        this.data = json.data;
+        this.data = json;
       })
       .catch(e => this.showError(e));
   }

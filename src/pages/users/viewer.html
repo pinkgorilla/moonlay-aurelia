@@ -2,55 +2,66 @@
   <require from="../../value-converters/number-format"></require>
   <require from="../../value-converters/date-format"></require>
   <form>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <label class="control-label" for="username">Username</label>
-          <input type="text" class="form-control" id="username" value.bind="data.username">
-          <span class="help-block">username</span>
+    <div class="row"> 
+      <div class="col-md-10 col-md-offset-1">      
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label" for="username">Username</label>
+              <input type="text" class="form-control" id="username" value.bind="data.username" required>
+              <span class="help-block">username</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label" for="password">Password</label>
+              <input type="password" class="form-control" id="password" value.bind="data.password" required>
+              <span class="help-block">enter password</span>
+            </div>
+          </div>
+        </div>  
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label" for="nik">NIK</label>
+              <input type="text" class="form-control" id="nik" value.bind="data.nik" required>
+              <span class="help-block">enter valid NIK</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label" for="initial">INITIAL</label>
+              <input type="text" class="form-control" id="initial" value.bind="data.initial" maxlength="3" required>
+              <span class="help-block">enter 3 characters</span>
+            </div>
+          </div>
         </div>
-      </div> 
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <label class="control-label" for="nik">NIK</label>
-          <input type="text" class="form-control" id="nik" value.bind="data.nik">
-          <span class="help-block">enter valid NIK</span>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="control-label" for="nama">NAME</label>
+              <input type="text" class="form-control" id="nama" value.bind="data.name" required>
+              <span class="help-block">enter name</span>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label class="control-label" for="initial">INITIAL</label>
-          <input type="text" class="form-control" id="initial" value.bind="data.initial">
-          <span class="help-block">enter 3 characters</span>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="form-group">
-          <label class="control-label" for="nama">NAME</label>
-          <input type="text" class="form-control" id="nama" value.bind="data.name">
-          <span class="help-block">enter name</span>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <label class="control-label" for="initial">D.O.B</label>
-          <input type="date" class="form-control" id="dob" value.bind="data.dob | dateFormat:'YYYY-MM-DD'">
-          <span class="help-block">enter date of birth</span>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label class="control-label" for="gender">GENDER</label>
-          <select id="gender" class="form-control" value.bind="data.gender">
-            <option value="" disabled selected>Select Gender</option>
-            <option repeat.for="gender of genders" value.bind="gender.value">${gender.label}</option>
-          </select>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label" for="initial">D.O.B</label>
+              <input type="date" class="form-control" id="dob" value.bind="data.dob | dateFormat:'YYYY-MM-DD'">
+              <span class="help-block">enter date of birth</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label" for="gender">GENDER</label>
+              <select id="gender" class="form-control" value.bind="data.gender" required>
+                <option value="" disabled selected>Select Gender</option>
+                <option repeat.for="gender of genders" value.bind="gender.value">${gender.label}</option>
+              </select>
+            </div>
+          </div>
         </div>
       </div>
     </div>
