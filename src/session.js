@@ -1,9 +1,8 @@
 'use strict'
-import {inject, transient} from 'aurelia-framework'
+import {inject} from 'aurelia-framework'
 import {Settings} from './app-config'
 
-@inject(Settings)
-@transient()
+@inject(Settings) 
 export class Session {
   constructor(settings) {
     this.settings = settings;
