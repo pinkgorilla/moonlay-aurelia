@@ -54,12 +54,14 @@ export class Editor extends BaseVM {
   }
 
   get isValid() {
-    for (var item of this.data.items) {
-      if (!item.type || item.type.length < 1)
-        return false;
-      if (!item.name || item.name.length < 1)
-        return false;
-    }
+    // for (var item of this.data.items) {
+    //   if (!item.type || item.type.length < 1)
+    //     return false;
+    //   if (!item.name || item.name.length < 1)
+    //     return false;
+    //   if (item.cancel == true && (!item.cancelReason || item.cancelReason.length < 1))
+    //     return false;
+    // }
     return true;
   }
 }

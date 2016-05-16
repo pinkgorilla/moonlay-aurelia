@@ -24,16 +24,15 @@ export class BaseVM {
         }
     }
     showError(error) {
-        console.log(error);
-        this.toastr.error(error.message || error.error || error, 'title');
+        this.toastr.error(error.message || error.error || error);
     }
-    showSuccess(message) {
-        console.log(message);
+    showSuccess(success) {
+        this.toastr.success(success.message || success);
     }
-    showWarning(message) {
-        console.log(message);
+    showWarning(warning) {
+        this.toastr.warning(warning.message || warning);
     }
-    showInfo(message) {
-        console.log(message);
+    showInfo(info) {
+        this.toastr.info(info.message || info);
     }
 }

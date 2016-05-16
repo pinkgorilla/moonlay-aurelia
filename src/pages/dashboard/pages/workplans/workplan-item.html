@@ -6,8 +6,8 @@
       <div class="col-sm-10"> 
         <div class="form-group label-static">
           <label for="${'item_type_' + itemNo}" class="control-label">Type</label>
-          <select id="${'item_type_' + itemNo}" class="form-control" value.bind="item.type">
-            <option value="" disabled selected>-Workitem Type-</option>
+          <select id="${'item_type_' + itemNo}" class="form-control" value.bind="item.type" required>
+            <option value="" selected>-Workitem Type-</option>
             <option repeat.for="type of types" value.bind="type.value">${type.label}</option>
           </select>
           <span class="help-block">task type</span>
@@ -17,7 +17,7 @@
     <div class="col-md-2">
       <div class="form-group label-floating">
         <label for="${'item_name_' + itemNo}" class="control-label">Name</label>
-        <input type="text" class="form-control" id="${'item_name_' + itemNo}" value.bind="item.name">
+        <input type="text" class="form-control" id="${'item_name_' + itemNo}" value.bind="item.name" required>
         <span class="help-block">workitem name</span>
       </div>
     </div>
@@ -31,7 +31,7 @@
     <div class="col-md-4" if.bind="item.cancel">
       <div class="form-group label-floating">
           <label for="${'item_cancelReason_' + itemNo}" class="control-label">Cancel Reason</label>
-          <input type="text" class="form-control" id="${'item_cancelReason_' + itemNo}" value.bind="item.cancelReason">
+          <input type="text" class="form-control" id="${'item_cancelReason_' + itemNo}" value.bind="item.cancelReason" required.bind="item.cancel">
           <span class="help-block">why?</span>
       </div>
     </div>
@@ -53,9 +53,8 @@
       <div class="form-group">        
         <div class="checkbox">
           <label if.bind="!item.cancel">
-            <input type="checkbox" id="${'item_done_' + itemNo}" checked.bind="item.done"> DONE
+            <input type="checkbox" id="${'item_done_' + itemNo}" checked.bind="item.done"> DONE &nbsp;
           </label>
-          &nbsp;
           <label if.bind="item.no != 0">
             <input type="checkbox" id="${'item_cancel_' + itemNo}" checked.bind="item.cancel" change.delegate="cancel()"> CANCEL
           </label> 
