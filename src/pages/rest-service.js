@@ -20,14 +20,19 @@ export class RestService {
             }
         });
     }
-    
-    get(endpoint, header) { 
+
+    get(endpoint, header) {
         var request = {
             method: 'GET',
             headers: new Headers(Object.assign({}, this.header, header))
         };
         return this.http.fetch(endpoint, request)
-            .then(response => response.json())
+            .then(response => {
+                if (response.status == 200)
+                    return response.json();
+                else
+                    throw response.statusText;
+            })
             .then(result => this.parseResult(result));
     }
 
@@ -37,21 +42,31 @@ export class RestService {
             headers: new Headers(Object.assign({}, this.header, header)),
             body: JSON.stringify(data)
         };
-        
+
         return this.http.fetch(endpoint, request)
-            .then(response => response.json())
+            .then(response => {
+                if (response.status == 200)
+                    return response.json();
+                else
+                    throw response.statusText;
+            })
             .then(result => this.parseResult(result));
     }
-    
-    post(endpoint, data, header){ 
+
+    post(endpoint, data, header) {
         var request = {
             method: 'POST',
             headers: new Headers(Object.assign({}, this.header, header)),
             body: JSON.stringify(data)
         };
         return this.http.fetch(endpoint, request)
-            .then(response => response.json())
+            .then(response => {
+                if (response.status == 200)
+                    return response.json();
+                else
+                    throw response.statusText;
+            })
             .then(result => this.parseResult(result));
     }
-    
+
 }
