@@ -1,9 +1,10 @@
-import {inject} from 'aurelia-framework';
+import {inject, transient} from 'aurelia-framework';
 import {Settings} from '../../app-config';
 import {Session} from '../../session';
 import {RestService} from '../rest-service';
 
 @inject(Session, Settings)
+@transient()
 export class Service extends RestService {
   constructor( session, settings) {
     super();

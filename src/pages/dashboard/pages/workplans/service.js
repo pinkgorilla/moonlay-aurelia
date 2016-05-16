@@ -1,9 +1,10 @@
-import {inject} from 'aurelia-framework'
+import {inject, transient} from 'aurelia-framework'
 import {Settings} from '../../../../app-config';
 import {Session} from '../../../../session';
 import {RestService} from '../../../rest-service';
 
 @inject(Settings, Session)
+@transient()
 export class Service extends RestService {
   constructor(settings, session) {
     super();
@@ -11,15 +12,15 @@ export class Service extends RestService {
     this.session = session;
     this.header = {
       "Content-type": "application/json; charset=UTF-8"
-    };
-    this.header[this.settings.tokenHeaderName] = this.session.token;
+    }; 
+    this.header[this.settings.tokenHeaderName] = this.session.token;    
   }
 
   get(initial, month, period) {
     var endpoint = this.settings.workplanEndpoint + '/workplans';
     if (month && period)
       endpoint = endpoint + '/' + month + '/' + period;
-
+       
     return super.get(endpoint, this.header);
   }
 

@@ -3,6 +3,7 @@ import {inject, transient} from 'aurelia-framework'
 import {Settings} from './app-config'
 
 @inject(Settings)
+@transient()
 export class Session {
   constructor(settings) {
     this.settings = settings;
