@@ -11,6 +11,7 @@ export class Editor extends BaseVM {
     super();
     this.service = service;
     this.router = router;
+    this.data = { items: [] };
   }
 
   activate(params) {
@@ -47,7 +48,18 @@ export class Editor extends BaseVM {
       })
       .catch(e => this.showError(e));
   }
+
   back() {
     this.router.navigateToRoute('list');
+  }
+
+  get isValid() {
+    for (var item of this.data.items) {
+      if (!item.type || item.type.length < 1)
+        return false;
+      if (!item.name || item.name.length < 1)
+        return false;
+    }
+    return true;
   }
 }
