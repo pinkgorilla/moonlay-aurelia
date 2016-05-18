@@ -23,7 +23,7 @@ module.exports = {
     new AureliaWebpackPlugin(),
     new DefinePlugin({
       env: {
-        tokenHeader: "'X-Access-Token'",
+        tokenHeader: "'Authorization'",
         cookieName: "'__moonlay_cookie'",
         authEndpoint: "'http://localhost:8080'",
         workplanEndpoint: "'http://localhost:8081'",

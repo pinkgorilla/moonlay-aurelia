@@ -24,7 +24,7 @@ module.exports = {
     new AureliaWebpackPlugin(),
     new DefinePlugin({
       env: {
-        tokenHeader: "'X-Access-Token'",
+        tokenHeader: "'Authorization'",
         cookieName: "'__moonlay_cookie'",
         authEndpoint: "'http://authentication-api-dev.mybluemix.net'",
         workplanEndpoint: "'https://workplan-api-dev.mybluemix.net'",

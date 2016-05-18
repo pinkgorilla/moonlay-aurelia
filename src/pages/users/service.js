@@ -7,14 +7,14 @@ import {RestService} from '../rest-service'
 @transient()
 export class Service extends RestService {
   constructor(session, settings) {
-    super(); 
+    super();
     this.session = session;
     this.settings = settings;
 
     this.header = {
       "Content-type": "application/json; charset=UTF-8"
     };
-    this.header[this.settings.tokenHeaderName] = this.session.token;
+    this.header[this.settings.tokenHeaderName] = "JWT " + this.session.token;
 
   }
 

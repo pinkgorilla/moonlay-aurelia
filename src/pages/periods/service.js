@@ -14,7 +14,7 @@ export class Service extends RestService {
     this.header = {
       "Content-Type": "application/json; charset=UTF-8"
     };
-    this.header[this.settings.tokenHeaderName] = this.session.token;
+    this.header[this.settings.tokenHeaderName] = "JWT " + this.session.token;
   }
 
   get(month, period) {
