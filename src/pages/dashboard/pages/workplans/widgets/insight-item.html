@@ -1,0 +1,46 @@
+<template>
+  <require from="value-converters/number-format"></require>
+  <require from="value-converters/date-format"></require>
+
+  <div class="panel panel-default">
+    <!--<div class="panel-heading"> -->
+    <!--<a class="pull-right" click.delegate="cancel()">X</a>-->
+    <!--<span class="pull-right">${item.estimatedDate | dateFormat:'fromnow'}&nbsp;</span>-->
+    <!--</div>-->
+    <div class="panel-body">
+      <div class="checkbox pull-left" style="margin:0px;">
+        <label style="color:inherit;">
+          <input disabled.bind="preCancel" type="checkbox" id="${'item_done_' + itemNo}" checked.bind="item.done" change.delegate="done()">&nbsp; ${item.name.toUpperCase()} 
+          <span if.bind="!item.cancel" class="badge" style="margin-bottom: 3px;">${item.estimatedDate | dateFormat:'fromnow'}</span>
+          <span if.bind="item.cancel" class="badge" style="margin-bottom: 3px;" alt.bind="item.cancelReason">canceled</span>
+          <!--<input disabled.bind="item.cancel" type="checkbox" id="${'item_done_' + itemNo}" checked.bind="item.done">&nbsp; ${item.estimatedDate | dateFormat:'MMM DD'} <span class="badge" style="margin-bottom: 3px;">${item.estimatedDate | dateFormat:'fromnow'}</span>-->
+        </label>
+      </div>      
+      <div class="pull-right togglebutton">
+        <label>
+          <input type="checkbox" checked.one-way="!preCancel" change.delegate="toggleCancel()">
+        </label>
+      </div>
+      <br style="clear:both;"/>
+      <br/>
+      <!--<h4 >${item.type.toUpperCase()} - ${item.name.toUpperCase()}</h4>-->
+      <p text-content.bind="item.description"></p>
+
+      <div if.bind="preCancel && !item.cancel">
+        <br/>
+        <div class="form-group label-floating">
+          <label for="${'item_cancelReason_' + itemNo}" class="control-label">Cancel Reason</label>
+          <input type="text" class="form-control" id="${'item_cancelReason_' + itemNo}" value.bind="item.cancelReason" required.bind="preCancel">
+          <!--<p text-content.bind="item.cancelReason" contenteditable="true"></p>-->
+          <span class="help-block">ლ(ಠ益ಠლ) why you no do it?</span>
+        </div>
+        <button if.bind="!item.cancel" class="btn btn-danger pull-right" click.delegate="cancel()">cancel</button>
+      </div>
+      <!--<div class="alert alert-dismissible alert-warning" style="clear:both" if.bind="item.cancel"> 
+        <h4>CANCELED</h4>
+
+        <p>${item.cancelReason}</p>
+      </div> -->
+    </div>
+  </div>
+</template>

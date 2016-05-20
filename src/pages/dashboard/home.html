@@ -1,6 +1,14 @@
 <template>
-  <!-- <require from="pages/dashboard/widgets/employee-workplan-widget"></require> -->
-  <h3>YOUR DASHBOARD</h3>
+   <require from="pages/dashboard/pages/workplans/widgets/insight"></require> 
+  <!--<a href="#" class="btn btn-lg btn-primary" click.delegate="goto('dashboard-workplans')">Workplans</a>-->
+  <div class="row">
+    <div class="col-md-9">
+      
+  <!--<h3>YOUR DASHBOARD</h3>-->
   <!-- <employee-workplan-widget initial.bind="initial"></employee-workplan-widget> -->
-  <a href="#" class="btn btn-lg btn-primary" click.delegate="goto('dashboard-workplans')">Workplans</a>
+    </div>
+    <div class="col-md-3">
+      <insight></insight>
+    </div>
+  </div>  
 </template>

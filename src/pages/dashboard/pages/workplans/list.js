@@ -15,7 +15,7 @@ export class List extends BaseVM {
 
   activate(params) {
     this.initial = params.initial;
-    this.service.get(this.initial)
+    this.service.get()
       .then(json => {
         this.data = json;
       })

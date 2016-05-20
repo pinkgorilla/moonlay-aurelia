@@ -19,7 +19,7 @@ export class Editor extends BaseVM {
     this.month = params.month;
     this.period = params.period;
 
-    this.service.get(this.initial, this.month, this.period)
+    this.service.get(this.month, this.period)
       .then(json => {
         this.data = json;
       })

@@ -1,0 +1,19 @@
+<template>
+  <require from="./insight-item"></require>
+  <h3>WORKPLAN INSIGHT</h3>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-7">
+          <!--<h4>${data.period.month + ' / ' +data.period.period}</h4>-->
+          <h4>${title}</h4> 
+        </div>
+        <div class="col-md-5">          
+          <div class="circle-bar" style="width:128px; height:128px; margin:auto;"></div>
+        </div>
+      </div>
+    </div>
+  </div> 
+  <h3>PLANS</h3>
+  <insight-item repeat.for="item of data.items" item.bind="item" insight.bind="$parent"></insight-item> 
+</template>

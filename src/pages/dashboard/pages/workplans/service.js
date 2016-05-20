@@ -16,13 +16,19 @@ export class Service extends RestService {
     this.header[this.settings.tokenHeaderName] = "JWT " + this.session.token;
   }
 
-  get(initial, month, period) {
+  get(month, period) {
     var endpoint = this.settings.workplanEndpoint + '/workplans';
     if (month && period)
       endpoint = endpoint + '/' + month + '/' + period;
        
     return super.get(endpoint, this.header);
   }
+  
+  getCurrent() {
+    var endpoint = this.settings.workplanEndpoint + '/workplans/current';  
+    return super.get(endpoint, this.header);
+  }
+  
 
   put(workplan) {
     var endpoint = this.settings.workplanEndpoint + '/workplans/' + workplan.period.month + '/' + workplan.period.period;
