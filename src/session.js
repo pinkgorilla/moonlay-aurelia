@@ -1,11 +1,10 @@
 'use strict'
 import {inject} from 'aurelia-framework'
 import {Settings} from './app-config'
-
-@inject(Settings) 
+  
 export class Session {
-  constructor(settings) {
-    this.settings = settings;
+  constructor() {
+    this.settings = new Settings();
   }
   get data() {
     var Cookies = require('js-cookie');

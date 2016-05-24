@@ -1,0 +1,9 @@
+<template>
+    <require from="pages/dashboard/pages/workplans/summary/summary-item"></require>
+    <div class="row">
+        <div class="col-md-4" repeat.for="item of data">
+            <summary-item item.bind="item"></summary-item>
+        </div> 
+    </div>
+    
+</template>

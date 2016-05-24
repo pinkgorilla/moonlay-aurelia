@@ -1,8 +1,8 @@
 import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
-import {periods} from '../../lookup';
+import {periods} from 'lookup';
 import {Service} from './service';
-import {BaseVM} from '../base-vm';
+import {BaseVM} from 'pages/base-vm';
 import moment from 'moment';
 import 'bootstrap-material-design';
 

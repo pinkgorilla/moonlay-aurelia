@@ -1,6 +1,6 @@
 import {inject} from 'aurelia-framework'
-import {Settings} from '../../app-config';
-import {RestService} from '../rest-service';
+import {Settings} from 'app-config';
+import {RestService} from 'pages/rest-service';
 
 @inject(Settings)
 export class Service extends RestService {

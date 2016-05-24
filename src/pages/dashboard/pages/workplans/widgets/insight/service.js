@@ -1,19 +1,10 @@
-import {inject, transient} from 'aurelia-framework'
-import {Settings} from '../../../../../app-config';
-import {Session} from '../../../../../session';
-import {RestService} from '../../../../rest-service';
-
-@inject(Settings, Session)
+import {transient} from 'aurelia-framework' 
+import {SecureService} from 'pages/secure-service';
+ 
 @transient()
-export class Service extends RestService {
-    constructor(settings, session) {
-        super();
-        this.settings = settings;
-        this.session = session;
-        this.header = {
-            "Content-type": "application/json; charset=UTF-8"
-        };
-        this.header[this.settings.tokenHeaderName] = "JWT " + this.session.token;
+export class Service extends SecureService {
+    constructor( ) {
+        super(); 
     }
 
     get() {

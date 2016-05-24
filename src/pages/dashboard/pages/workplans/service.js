@@ -1,34 +1,25 @@
-import {inject, transient} from 'aurelia-framework'
-import {Settings} from '../../../../app-config';
-import {Session} from '../../../../session';
-import {RestService} from '../../../rest-service';
+import {inject, transient} from 'aurelia-framework' 
+import {SecureService} from 'pages/secure-service';
 
-@inject(Settings, Session)
 @transient()
-export class Service extends RestService {
-  constructor(settings, session) {
+export class Service extends SecureService {
+  constructor() {
     super();
-    this.settings = settings;
-    this.session = session;
-    this.header = {
-      "Content-type": "application/json; charset=UTF-8"
-    }; 
-    this.header[this.settings.tokenHeaderName] = "JWT " + this.session.token;
   }
 
   get(month, period) {
     var endpoint = this.settings.workplanEndpoint + '/workplans';
     if (month && period)
       endpoint = endpoint + '/' + month + '/' + period;
-       
+
     return super.get(endpoint, this.header);
   }
-  
+
   getCurrent() {
-    var endpoint = this.settings.workplanEndpoint + '/workplans/current';  
+    var endpoint = this.settings.workplanEndpoint + '/workplans/current';
     return super.get(endpoint, this.header);
   }
-  
+
 
   put(workplan) {
     var endpoint = this.settings.workplanEndpoint + '/workplans/' + workplan.period.month + '/' + workplan.period.period;

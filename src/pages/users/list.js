@@ -1,7 +1,7 @@
 import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
 import {Service} from './service';
-import {BaseVM} from '../base-vm';
+import {BaseVM} from 'pages/base-vm';
 
 @inject(Router, Service)
 export class List extends BaseVM{

@@ -45,6 +45,11 @@ export class Insight {
                 this.data = data;
 
                 var momentParams = this.data.period.month.split("-").map(item => parseInt(item));
+                
+                //http://momentjs.com/docs/#/parsing/array/
+                //month is 0 indexed (0 is january);
+                momentParams[1] = momentParams[1] - 1;
+                
                 this.title = moment(momentParams).format("MMMM YYYY") + ', Period 0' + this.data.period.period;
                 this.title = this.title.toUpperCase();
 

@@ -1,5 +1,5 @@
 import {bindable, inject} from 'aurelia-framework'
-import {types} from '../../../../lookup';
+import {types} from 'lookup';
 import 'bootstrap-material-design';
 
 @inject(types)

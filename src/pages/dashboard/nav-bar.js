@@ -1,5 +1,5 @@
 import {inject} from 'aurelia-framework';
-import {Session} from '../../session';
+import {Session} from 'session';
 import {Router} from 'aurelia-router';
 
 @inject(Session, Router)
@@ -11,7 +11,10 @@ export class NavBar
         this.router = router;
         this.name = this.session.data.user.name;      
     }    
-    
+    profile()
+    {
+        this.router.navigateToRoute('profile');
+    }
     logout()
     {
         this.session.remove()

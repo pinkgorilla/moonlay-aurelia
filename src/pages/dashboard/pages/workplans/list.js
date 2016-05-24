@@ -1,7 +1,7 @@
 import {inject} from 'aurelia-framework'
 import {Router} from 'aurelia-router'
 import {Service} from './service'
-import {BaseVM} from '../../../base-vm';
+import {BaseVM} from 'pages/base-vm';
 import 'bootstrap-material-design';
 
 @inject(Service, Router)

@@ -27,6 +27,8 @@ module.exports = {
         cookieName: "'__moonlay_cookie'",
         authEndpoint: "'http://localhost:8080'",
         workplanEndpoint: "'http://localhost:8081'",
+        // authEndpoint: "'http://authentication-api.mybluemix.net'",
+        // workplanEndpoint: "'https://workplan-api.mybluemix.net'",
       }
     }),
     new ProvidePlugin({
@@ -46,6 +48,11 @@ module.exports = {
       { test: /\.woff2(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=10000&mimetype=application/font-woff2' },
       { test: /\.woff(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=10000&mimetype=application/font-woff' },
       { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'file' }
+    ]
+  },
+  resolve:{
+    root:[
+      path.resolve('./src')
     ]
   }
 };

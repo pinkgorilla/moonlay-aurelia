@@ -1,6 +1,6 @@
 export var genders = [{
   'value': 'M',
-  'label': 'Pria'
+  'label': 'Male'
 }, {
   'value': 'F',
   'label': 'Female'

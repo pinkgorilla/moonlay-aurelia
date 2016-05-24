@@ -1,8 +1,8 @@
 import {inject} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
 import {Service} from './service';
-import {Session} from '../../session';
-import {BaseVM} from '../base-vm';
+import {Session} from 'session';
+import {BaseVM} from 'pages/base-vm';
 
 import 'bootstrap-material-design';
 
