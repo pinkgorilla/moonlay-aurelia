@@ -8,7 +8,7 @@ export class Service extends SecureService {
     }
 
     get() {
-        var endpoint = this.settings.workplanEndpoint + '/workplans/current';
+        var endpoint = this.settings.workplanEndpoint + '/workplans/insight';
         return super.get(endpoint, this.header);
     }
 
