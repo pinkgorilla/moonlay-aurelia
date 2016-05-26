@@ -52,6 +52,7 @@ module.exports = {
   },
   resolve:{
     root:[
+      path.resolve('./'),
       path.resolve('./src')
     ]
   }
