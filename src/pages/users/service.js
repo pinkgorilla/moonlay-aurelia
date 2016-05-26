@@ -15,15 +15,15 @@ export class Service extends SecureService {
     return super.get(endpoint, this.header);
   }
 
-  put(user) {
-    var endpoint = this.settings.authEndpoint + '/accounts/' + user.username;
+  put(user) { 
+    var endpoint = this.settings.authEndpoint + '/accounts';
 
     return super.put(endpoint, user, this.header);
   }
 
   post(user) {
     var endpoint = this.settings.authEndpoint + '/accounts';
-
+    
     return super.post(endpoint, user, this.header);
   }
 }

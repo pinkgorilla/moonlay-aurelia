@@ -20,7 +20,7 @@ export class Editor extends BaseVM {
     var period = params.period;
     if (month && period) {
       this.service.get(month, period)
-        .then(json => {
+        .then(json => {  
           this.data = json;
         })
         .catch(e => this.showError(e));
