@@ -1,9 +1,28 @@
 <template>
     <require from="pages/dashboard/pages/workplans/summary/summary-item"></require>
+    
+    <div class="row">
+    <div class="col-md-6">
+      <label class="col-sm-2 control-label">Period</label>
+      <div class="col-sm-10"> 
+        <div class="form-group label-static">
+          <label for="${'item_type_' + itemNo}" class="control-label">Period</label>
+          <select id="${'item_type_' + itemNo}" class="form-control" value.bind="period" required>
+            <!--<option value="" selected>-select period-</option>-->
+            <option repeat.for="period of periods"  value.bind="period.month + '/' + period.period">${period.month + ' / ' + period.period }</option>
+          </select>
+          <span class="help-block">task type</span>
+        </div> 
+      </div>   
+    </div>
+    <div class="col-md-6"> 
+      <button class="btn btn-primary btn-raised" click.delegate="loadSummary()">LOAD</button>
+      <button class="btn btn-info btn-raised" click.delegate="downloadSummary()">CSV</button>
+    </div>
+    </div>
     <div class="row">
         <div class="col-md-4" repeat.for="item of data">
             <summary-item item.bind="item"></summary-item>
         </div> 
-    </div>
-    
+    </div>  
 </template>

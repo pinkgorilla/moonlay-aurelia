@@ -16,6 +16,7 @@ export class WorkplanItem {
     }
     attached() {
         $.material.init();
+        console.log(this.item);
     }
     remove() {
         var itemIndex = this.workplan.items.indexOf(this.item);
