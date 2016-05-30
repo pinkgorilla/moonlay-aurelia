@@ -55,10 +55,10 @@
           <label if.bind="!item.cancel">
             <input type="checkbox" id="${'item_done_' + itemNo}" checked.bind="item.done"> DONE &nbsp;
           </label>
-          <label if.bind="item.no != 0">
+          <label if.bind="item.no && item.no != 0">
             <input type="checkbox" id="${'item_cancel_' + itemNo}" checked.bind="item.cancel" change.delegate="cancel()"> CANCEL
           </label> 
-          <a href="#" class="btn btn-danger btn-sm" click.delegate="remove()" if.bind="item.no == 0">remove</a> 
+          <a href="#" class="btn btn-danger btn-sm" click.delegate="remove()" if.bind="!item.no ||item.no == 0">remove</a> 
         </div>  
       </div>
     </div>
