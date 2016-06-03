@@ -55,7 +55,6 @@
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^2.2.3",
     "js-cookie": "^2.1.1",
-    "mean-toolkit": "^1.0.4",
     "moment": "^2.13.0",
     "numeral": "^1.5.3",
     "progressbar.js": "^1.0.1",
