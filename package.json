@@ -43,10 +43,10 @@
     "aurelia-templating-binding": "^1.0.0-beta.1.1.1",
     "aurelia-templating-resources": "^1.0.0-beta.1.1.1",
     "aurelia-templating-router": "^1.0.0-beta.1.1.1",
+    "authentication-models": "^1.0.0",
     "bluebird": "^3.3.4",
     "bootstrap": "^3.3.6",
     "bootstrap-material-design": "^0.5.9",
-    "capital-models": "^1.0.12",
     "chart.js": "^2.1.2",
     "exports-loader": "^0.6.3",
     "file-saver": "^1.2.2",
@@ -59,7 +59,8 @@
     "numeral": "^1.5.3",
     "progressbar.js": "^1.0.1",
     "toastr": "^2.1.2",
-    "whatwg-fetch": "^1.0.0"
+    "whatwg-fetch": "^1.0.0",
+    "workplan-models": "^1.0.0"
   },
   "devDependencies": {
     "aurelia-tools": "^0.1.18",

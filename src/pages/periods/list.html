@@ -1,11 +1,13 @@
 <template>
+  <require from="value-converters/number-format"></require>
+  <require from="value-converters/date-format"></require>
   <table class="table table-striped table-hover ">
     <thead>
       <tr>
         <th>Month</th>
         <th>Period</th>
         <th>From/To</th>
-        <th> 
+        <th>
         </th>
       </tr>
     </thead>
@@ -13,7 +15,7 @@
       <tr repeat.for="row of data" click.delegate="$parent.view(row)">
         <td>${row.month}</td>
         <td>${row.period}</td>
-        <td>${row.from + ' - ' + row.to}</td>
+        <td>${row.from|dateFormat:"DD-MMM-YYYY"} s/d ${row.to|dateFormat:"DD-MMM-YYYY"}</td>
         <td>
           <a href='#' click.delegate="$parent.edit(row)">Edit</a>
         </td>
@@ -21,7 +23,7 @@
     </tbody>
     <tfoot>
       <tr>
-        <td colspan="4" class="text-right">          
+        <td colspan="4" class="text-right">
           <button class="btn btn-primary btn-raised" click.delegate="create()">Create</a>
         </td>
       </tr>

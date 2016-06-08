@@ -32,7 +32,7 @@ export class Editor extends BaseVM {
 
   add() {
     var now = new Date();
-    var UserWorkplanItem = require('capital-models').workplan.UserWorkplanItem;
+    var UserWorkplanItem = require('workplan-models').UserWorkplanItem;
     var item = new UserWorkplanItem(
       {
         estimatedDate: moment(this.data.period.to).format('YYYY-MM-DD'),
